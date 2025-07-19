@@ -1,0 +1,84 @@
+<div class="mainContainerFooterMb">
+  <div class="mainFooterBlockSec">
+    {% for block in section.blocks %}
+      <div class="mainFooterblockContent">
+        <a href="{{ block.settings.button_link }}">
+          <img src="{{ block.settings.image | img_url : 'master' }}" height="" width="">
+          <p>{{ block.settings.heading }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<style>
+  div#shopify-section-footer-Shop{
+    position:relative;
+    z-index:99999;
+  }
+  .mainContainerFooterMb{
+    display:none;
+  }
+
+    .mainFooterBlockSec {
+      position:fixed;
+      bottom:0;
+      left:0;
+      width:100%;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      text-align: center;
+      justify-content:space-between;
+      background:#fff;
+      padding:1.5rem 1rem;
+    }
+    .mainFooterblockContent a {
+      text-decoration: none;
+    }
+    .mainFooterblockContent img {
+      max-width: 20px;
+    }
+    .mainFooterblockContent p{
+      color:#000;
+      margin:0;
+      font-size:13px;
+      line-height:1;
+  }
+  @media(max-width:768px){
+    .mainContainerFooterMb{
+      display:block;
+      position:relative;
+      z-index:99;
+    }
+  }
+</style>
+{% schema %}
+{
+"name": "Footer shop",
+"settings": [
+],
+"blocks": [
+{
+"type": "feature",
+"name": "Footer Block",
+"settings": [
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image"
+},
+{
+"type": "text",
+"id": "heading",
+"label": "Text"
+},
+{
+"type": "url",
+"id": "button_link",
+"label": "Button Link"
+}
+]
+}
+]
+}
+{% endschema %}
